@@ -1,0 +1,104 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #01823E;
+  color: #F2AECE;
+  padding: 30px 10px;
+  box-shadow: 0 0 20px #01823E;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+p {
+  margin: 5px 0 0;
+}
+
+main {
+  padding: 40px 10px;
+}
+
+#player {
+  background-color: #111;
+  display: inline-block;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #F2AECE;
+  margin-bottom: 40px;
+}
+
+#cover {
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  object-fit: cover;
+  border: 4px solid #01823E;
+}
+
+h2 {
+  color: #F2AECE;
+  margin: 20px 0 10px;
+  font-size: 1.8em;
+}
+
+audio {
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+  display: block;
+}
+
+.volume-control {
+  margin-top: 15px;
+  color: #F2AECE;
+}
+
+input[type="range"] {
+  width: 60%;
+  accent-color: #01823E;
+}
+
+#playlist {
+  margin-top: 20px;
+}
+
+#playlist h3 {
+  color: #01823E;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+}
+
+button {
+  background-color: #F2AECE;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 20px;
+  margin: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #01823E;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+footer {
+  background-color: #111;
+  color: #888;
+  padding: 20px;
+  font-size: 0.9em;
+}
