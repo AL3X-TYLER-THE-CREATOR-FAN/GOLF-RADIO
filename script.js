@@ -1,5 +1,10 @@
-  <script>
-    const songs = [
+const player = document.getElementById('radioPlayer');
+const title = document.getElementById('songTitle');
+const cover = document.getElementById('cover');
+const volumeSlider = document.getElementById('volumeSlider');
+
+// playlist (add your songs here)
+const playlist = [
       { src: 'IGORS THEME.mp3', title: 'IGORS THEME', cover: 'igor.jpg' },
       { src: 'EARFQUAKE.mp3', title: 'EARFQUAKE', cover: 'igor.jpg' },
       { src: 'I THINK.mp3', title: 'I THINK', cover: 'igor.jpg' },
@@ -12,42 +17,46 @@
       { src: 'GONE GONE - THANK YOU.mp3', title: 'GONE GONE / THANK YOU', cover: 'igor.jpg' },
       { src: 'I DONT LOVE YOU ANYMORE.mp3', title: "I DON'T LOVE YOU ANYMORE", cover: 'igor.jpg' },
       { src: 'ARE WE STILL FRIENDS.mp3', title: 'ARE WE STILL FRIENDS?', cover: 'igor.jpg' }
-    ];
+];
 
-    let currentSong = 0;
-    const player = document.getElementById('radioPlayer');
-    const title = document.getElementById('songTitle');
-    const cover = document.getElementById('cover');
-    const volume = document.getElementById('volume');
+let currentSong = 0;
 
-    function playSong(src, name, img) {
-      player.src = src;
+function playSong(src, name, image) {
+  player.src = src;
+  player.play();
+  title.textContent = name;
+  cover.src = image;
+  currentSong = playlist.findIndex(s => s.src === src);
+}
+
+volumeSlider.addEventListener('input', () => {
+  player.volume = volumeSlider.value;
+});
+
+// autoplay + loop
+window.addEventListener('load', () => {
+  player.play().catch(() => {
+    // show small banner if autoplay is blocked
+    const notice = document.createElement('div');
+    notice.textContent = 'click anywhere to start GOLF RADIO 🎵';
+    notice.style.position = 'fixed';
+    notice.style.top = '0';
+    notice.style.left = '0';
+    notice.style.right = '0';
+    notice.style.background = '#F2AECE';
+    notice.style.color = '#000';
+    notice.style.padding = '15px';
+    document.body.prepend(notice);
+    document.body.addEventListener('click', () => {
       player.play();
-      title.textContent = name;
-      cover.src = img;
-    }
+      notice.remove();
+    }, { once: true });
+  });
+});
 
-    function loadSong(index) {
-      const s = songs[index];
-      player.src = s.src;
-      title.textContent = s.title;
-      cover.src = s.cover;
-      player.play();
-    }
-
-    player.addEventListener('ended', () => {
-      currentSong = (currentSong + 1) % songs.length;
-      loadSong(currentSong);
-    });
-
-    volume.addEventListener('input', () => {
-      player.volume = volume.value;
-    });
-
-    window.addEventListener('load', () => {
-      loadSong(currentSong);
-      player.play().catch(() => {
-        document.body.addEventListener('click', () => player.play(), { once: true });
-      });
-    });
-  </script>
+// when a song ends → go to the next, loop when done
+player.addEventListener('ended', () => {
+  currentSong = (currentSong + 1) % playlist.length;
+  const next = playlist[currentSong];
+  playSong(next.src, next.title, next.cover);
+});
