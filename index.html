@@ -9,30 +9,37 @@
 <body>
   <header>
     <h1>GOLF RADIO</h1>
-    <p>tyler, the creator radio.</p>
+    <p>live. tyler. forever.</p>
   </header>
 
   <main>
     <section id="player">
-      <h2>Now Playing</h2>
+      <img id="cover" src="cover1.jpg" alt="Album cover" />
+      <h2 id="songTitle">See You Again</h2>
       <audio id="radioPlayer" controls>
-        <source src="YOUR-MP3-LINK-HERE" type="audio/mpeg">
+        <source src="YOUR-FIRST-MP3-LINK.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
+
+      <div class="volume-control">
+        <label for="volumeSlider">volume</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+      </div>
     </section>
 
     <section id="playlist">
-      <h2>Playlist</h2>
+      <h3>playlist</h3>
       <ul>
-        <li><button onclick="playSong('SONG1.mp3')">Song 1</button></li>
-        <li><button onclick="playSong('SONG2.mp3')">Song 2</button></li>
-        <li><button onclick="playSong('SONG3.mp3')">Song 3</button></li>
+        <li><button onclick="playSong('YOUR-FIRST-MP3-LINK.mp3', 'See You Again', 'cover1.jpg')">See You Again</button></li>
+        <li><button onclick="playSong('YOUR-SECOND-MP3-LINK.mp3', 'Earfquake', 'cover2.jpg')">Earfquake</button></li>
+        <li><button onclick="playSong('YOUR-THIRD-MP3-LINK.mp3', 'Boredom', 'cover3.jpg')">Boredom</button></li>
+        <li><button onclick="playSong('YOUR-FOURTH-MP3-LINK.mp3', 'Dogtooth', 'cover4.jpg')">Dogtooth</button></li>
       </ul>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 GOLF RADIO, Powered by GitHub Pages.</p>
+    <p>© 2025 GOLF RADIO • inspired by Tyler, The Creator</p>
   </footer>
 
   <script src="script.js"></script>
